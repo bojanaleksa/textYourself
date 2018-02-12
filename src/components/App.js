@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
+import MainMenu from './MainMenu';
+
 class App extends React.Component {
 
 	componentWillMount() {
@@ -9,6 +11,7 @@ class App extends React.Component {
 
  	render() {
     	return <div>
+    		<MainMenu location={this.props.location}/>
     		<div>We are here: {this.props.location} </div>
     		{this.props.children}
     	</div>
