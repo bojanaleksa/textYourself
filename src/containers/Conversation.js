@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
     	messages: state.messages.filter( message => 
             (message.sender === state.current.ego && message.receiver === state.current.converser) || 
-            (message.sender === state.current.converser && message.receiver === state.current.sender)),
+            (message.sender === state.current.converser && message.receiver === state.current.ego)),
         sender: state.egos.find(ego => ego.id === state.current.ego),
         receiver: state.egos.find(ego => ego.id === state.current.converser)
     }
