@@ -4,7 +4,8 @@ import actions from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-    	location: state.routing.locationBeforeTransitions.pathname
+    	location: ownProps.location.pathname.replace('/', ''),
+        ego: state.current.ego
     }
 }
 

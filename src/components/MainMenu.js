@@ -11,7 +11,7 @@ const MainMenu = props => <Toolbar>
     </ToolbarGroup>
     <ToolbarGroup>
     	<Link to="egos"><RaisedButton label="Choose Ego" primary={props.location==='egos'} /></Link>
-    	<Link to="converser"><RaisedButton label="Choose Conversation" primary={props.location==='converser'} /></Link>
+    	<Link to="converser"><RaisedButton disabled={!props.hasEgo} label="Choose Conversation" primary={props.location==='converser'} /></Link>
     	<Link to="newego"><RaisedButton label="Make new ego" primary={props.location==='newego'} /></Link>
     </ToolbarGroup>
 </Toolbar>;

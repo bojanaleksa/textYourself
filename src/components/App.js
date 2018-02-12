@@ -11,7 +11,7 @@ class App extends React.Component {
 
  	render() {
     	return <div>
-    		<MainMenu location={this.props.location}/>
+    		<MainMenu location={this.props.location} hasEgo={this.props.ego} />
     		<div>We are here: {this.props.location} </div>
     		{this.props.children}
     	</div>

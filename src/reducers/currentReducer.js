@@ -11,7 +11,7 @@ function currentEgoReducer(state = 0, action) {
 
 function currentConverserReducer(state = 0, action) {
 	switch (action.type) {
-		case action.CHOOSE_CONVERSER: return action.id
+		case actions.CHOOSE_CONVERSER: return action.id
 		default: return state
 	}
 }
