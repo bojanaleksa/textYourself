@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TheComponent from '../components/views/CreateEgoView';
+import TheComponent from '../components/forms/CreateEgoForm';
 import actions from '../actions';
 
 const mapStateToProps = (state, ownProps) => {

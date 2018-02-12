@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
-class CreateEgoView extends React.Component {
+class CreateEgoForm extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -13,6 +13,7 @@ class CreateEgoView extends React.Component {
 		}
 
 		this.handleChange = this.handleChange.bind(this);
+		this.saveOnEnter = this.saveOnEnter.bind(this);
 		this.save = this.save.bind(this);
 	}
 
@@ -24,19 +25,25 @@ class CreateEgoView extends React.Component {
 
 	save() {
 		this.props.create(this.state.name);
+		this.setState({name: ''});
+	}
+
+	saveOnEnter(event) {
+		if (event.key !== 'Enter') return;
+		this.save();
 	}
 
 	render() {
 		return <div>
 			<TextField floatingLabelText="New ego name" fullWidth
-				value={this.state.name} onChange={this.handleChange} />
+				value={this.state.name} onChange={this.handleChange} onKeyDown={this.saveOnEnter} />
 		    <FlatButton label="Save" fullWidth onClick={this.save} />
 		</div>
 	}
 }
 
-CreateEgoView.propTypes = {
+CreateEgoForm.propTypes = {
 	create: PropTypes.func.isRequired
 }
 
-export default CreateEgoView;
+export default CreateEgoForm;

@@ -4,7 +4,9 @@ import actions from '../actions';
 
 const mapStateToProps = (state, ownProps) => {
     return {
-    	messages: state.messages.filter( message => message.sender === state.current.ego || message.sender === state.current.converser),
+    	messages: state.messages.filter( message => 
+            (message.sender === state.current.ego && message.receiver === state.current.converser) || 
+            (message.sender === state.current.converser && message.receiver === state.current.sender)),
         sender: state.egos.find(ego => ego.id === state.current.ego),
         receiver: state.egos.find(ego => ego.id === state.current.converser)
     }
