@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import {List, ListItem} from 'material-ui/List';
-import Avatar from 'material-ui/Avatar';
-
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -52,7 +49,7 @@ class ConversationView extends React.Component {
 	render() {
 		let {props} = this;
 		return <div>
-			<ChatBox conversation={this.props.messages} />
+			<ChatBox conversation={props.messages} readMessage={props.markAsRead} />
 
 			<TextField hintText="Type new message" fullWidth 
 			value={this.state.newMessage} onChange={this.handleNewMessage} onKeyDown={this.submitNewMessageOnEnter} />
@@ -67,13 +64,3 @@ ConversationView.propTypes = {
 };
 
 export default ConversationView;
-/*<List className="messages">
-			{props.messages.map( (message, key) => 
-				<ListItem key={key} primaryText={message.text}
-					className={!message.read && message.sender === props.receiver.id ? 'unread' : ''}
-					onClick={props.markAsRead.bind(this, message.id)}
-					leftAvatar={message.sender === props.sender.id ? <Avatar>{props.sender.name.slice(0, 2)}</Avatar> : undefined}
-					rightAvatar={message.sender === props.receiver.id ? <Avatar>{props.receiver.name.slice(0, 2)}</Avatar> : undefined}
-				/>
-			)}
-			</List>*/

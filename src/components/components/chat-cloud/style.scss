@@ -7,10 +7,15 @@ $c2: #46C3D5;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    pointer-events: none;
     &.right {
+        pointer-events: auto;
         justify-content: flex-end;
         .react-chat-cloud-avatar {
             order: 2;
+        }
+        >svg {
+            order: 0;
         }
         .react-chat-cloud-text {
             background: $c2;
@@ -39,9 +44,11 @@ $c2: #46C3D5;
         font-size: 15px;
         text-align: left;
         display: inline-block;
-        &.unread {
-            border: 1px solid red;
-        }
+        &.unread {}
+    }
+
+    >svg {
+        order: 3;
     }
 
     @keyframes bounceIn {

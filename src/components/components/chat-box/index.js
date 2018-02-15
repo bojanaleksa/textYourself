@@ -11,6 +11,7 @@ class ReactChatBox extends React.Component {
       this.state = {
         conversation: this.props.conversation
       }
+
   	}
 
     componentDidMount() {
@@ -40,7 +41,7 @@ class ReactChatBox extends React.Component {
     render() {
       return <div className="react-chat-box">
           {this.state.conversation.map((item, key) => 
-              <Cloud key={key} delay={this.props.delay} {...item} />
+              <Cloud key={key} delay={this.props.delay} {...item} click={this.props.readMessage}/>
           )}
       </div>
     }

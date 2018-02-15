@@ -16,7 +16,7 @@ const fake = [{
 
 function messageReducer(state = fake, action) {
     switch (action.type) {
-    	case actions.MESSAGE_SEND: return [...state, action.message]
+    	case actions.MESSAGE_SEND: return [...state, {...action.message, read: false, id: state[state.length - 1].id + 1}]
     	case actions.MESSAGE_READ: return state.map( message => {
     		if (message.id !== action.id) return message;
     		return {...message, read: true}

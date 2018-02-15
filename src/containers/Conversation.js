@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
             (message.sender === state.current.ego && message.receiver === state.current.converser) || 
             (message.sender === state.current.converser && message.receiver === state.current.ego)).map(message => {
                 return {
+                    id: message.id,
                     message: message.text,
                     delay: 1000,
                     alignment: message.sender === state.current.ego ? 'left' : 'right',
