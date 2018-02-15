@@ -23,6 +23,14 @@ class ConversationView extends React.Component {
 		this.submitNewMessageOnEnter = this.submitNewMessageOnEnter.bind(this);
 	}
 
+	componentWillMount() {
+		if (this.props.noEgo) {
+			this.props.buildFirstEgo();
+			return;
+		}
+		if (this.props.noConverser) this.props.chooseConverser();
+	}
+
 	handleNewMessage(event) {
 		this.setState({newMessage: event.target.value});
 	}

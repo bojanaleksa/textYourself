@@ -5,8 +5,12 @@ import actions from '../actions';
 import {history} from '../store';
 
 const mapStateToProps = (state, ownProps) => {
+    let messages = state.messages.filter(message => !message.read);
     return {
-    	egos: state.egos
+    	egos: state.egos.map(ego => ({
+            ...ego,
+            messageCount: messages.filter(message => message.receiver === ego.id).length
+        })),
     }
 }
 

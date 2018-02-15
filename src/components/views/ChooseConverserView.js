@@ -6,7 +6,7 @@ import Avatar from 'material-ui/Avatar';
 class ChooseConverserView extends React.Component {
 	
 	componentWillMount() {
-		if (this.props.noEgo) this.props.buidlFirstEgo();
+		if (this.props.noEgo) this.props.buildFirstEgo();
 	}
 
 	render() {
@@ -15,7 +15,7 @@ class ChooseConverserView extends React.Component {
 			<List>
 				{props.egos.map( (ego, key) => 
 					<ListItem key={key} primaryText={ego.name} onClick={props.choose.bind(this, ego.id)} 
-					rightAvatar={<Avatar>{ego.name.slice(0, 2)}</Avatar>}
+					rightAvatar={<Avatar backgroundColor={ego.messageCount ? 'red' : ''}>{ego.messageCount ? ego.messageCount : ego.name.slice(0, 2)}</Avatar>}
 					/>
 				)}
 			</List>
