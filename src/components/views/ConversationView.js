@@ -7,7 +7,7 @@ import Avatar from 'material-ui/Avatar';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
-const style = {background: 'silver', borderRadius: '5px'};
+import ChatBox from '../components/chat-box';
 
 class ConversationView extends React.Component {
 
@@ -52,16 +52,7 @@ class ConversationView extends React.Component {
 	render() {
 		let {props} = this;
 		return <div>
-			<List>
-			{props.messages.map( (message, key) => 
-				<ListItem key={key} primaryText={message.text}
-					innerDivStyle={!message.read && message.sender === props.receiver.id ? style : {}}
-					onClick={props.markAsRead.bind(this, message.id)}
-					leftAvatar={message.sender === props.sender.id ? <Avatar>{props.sender.name.slice(0, 2)}</Avatar> : undefined}
-					rightAvatar={message.sender === props.receiver.id ? <Avatar>{props.receiver.name.slice(0, 2)}</Avatar> : undefined}
-				/>
-			)}
-			</List>
+			<ChatBox conversation={this.props.messages} />
 
 			<TextField hintText="Type new message" fullWidth 
 			value={this.state.newMessage} onChange={this.handleNewMessage} onKeyDown={this.submitNewMessageOnEnter} />
@@ -76,3 +67,13 @@ ConversationView.propTypes = {
 };
 
 export default ConversationView;
+/*<List className="messages">
+			{props.messages.map( (message, key) => 
+				<ListItem key={key} primaryText={message.text}
+					className={!message.read && message.sender === props.receiver.id ? 'unread' : ''}
+					onClick={props.markAsRead.bind(this, message.id)}
+					leftAvatar={message.sender === props.sender.id ? <Avatar>{props.sender.name.slice(0, 2)}</Avatar> : undefined}
+					rightAvatar={message.sender === props.receiver.id ? <Avatar>{props.receiver.name.slice(0, 2)}</Avatar> : undefined}
+				/>
+			)}
+			</List>*/

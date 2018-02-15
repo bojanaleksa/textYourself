@@ -10,7 +10,15 @@ const mapStateToProps = (state, ownProps) => {
         noConverser: !state.current.converser,
     	messages: state.messages.filter( message => 
             (message.sender === state.current.ego && message.receiver === state.current.converser) || 
-            (message.sender === state.current.converser && message.receiver === state.current.ego)),
+            (message.sender === state.current.converser && message.receiver === state.current.ego)).map(message => {
+                return {
+                    message: message.text,
+                    delay: 1000,
+                    alignment: message.sender === state.current.ego ? 'left' : 'right',
+                    name: state.egos.find(ego => ego.id === message.sender).name,
+                    read: message.read
+                }
+            }),
         sender: state.egos.find(ego => ego.id === state.current.ego),
         receiver: state.egos.find(ego => ego.id === state.current.converser)
     }

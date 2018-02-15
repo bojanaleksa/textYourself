@@ -6,7 +6,6 @@ import {history} from '../store';
 
 const mapStateToProps = (state, ownProps) => {
     let messages = state.messages.filter(message =>  message.receiver == state.current.ego); 
-    console.log('poruke', messages);
     return {
         noEgo: !state.egos.length || !state.current.ego,
     	egos: state.egos.filter(ego => ego.id !== state.current.ego).map(ego => ({
