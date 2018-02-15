@@ -1,18 +1,24 @@
 import React from "react";
 
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 
 import {Link} from 'react-router';
 
-const MainMenu = props => <Toolbar>
-    <ToolbarGroup firstChild={true}>
-    	<ToolbarTitle text="Alter Ego Messaging System" />
-    </ToolbarGroup>
-    <ToolbarGroup>
-    	<Link to="/"><RaisedButton label="Choose Ego" primary={props.location===''} /></Link>
-    	<Link to="/converser"><RaisedButton disabled={!props.hasEgo} label="Choose Conversation" primary={props.location==='converser'} /></Link>
-    </ToolbarGroup>
-</Toolbar>;
+const MainMenu = props => <div className="main-menu">
+    <h2>AEMS</h2>
+    <IconMenu
+        iconButtonElement={
+            <IconButton touch={true}>
+            	<NavigationExpandMoreIcon />
+            </IconButton>
+        }
+    >
+        <MenuItem><Link to="/ego">Change ego</Link></MenuItem>
+    </IconMenu>
+</div>;
 
 export default MainMenu;

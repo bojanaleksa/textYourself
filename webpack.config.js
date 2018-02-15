@@ -22,7 +22,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'public/assets'),
         //stats: 'errors-only',
-        open: true,
+        //open: true,
         //port: 8080,
         compress: true,
         hot: true,
@@ -33,7 +33,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
-        extractPlugin,
+        //extractPlugin,
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({
             config: JSON.stringify(config)
@@ -70,10 +70,11 @@ module.exports = {
             test: /\.scss$/,
             include: /src/,
             exclude: /node_modules/,
-            use: extractPlugin.extract({
-                use: ["css-loader", "sass-loader", "postcss-loader"],
-                fallback: 'style-loader'
-            })
+            use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
+            // use: extractPlugin.extract({
+            //     use: ["css-loader", "sass-loader", "postcss-loader"],
+            //     fallback: 'style-loader'
+            // })
         }]
     }
 }

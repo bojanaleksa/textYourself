@@ -12,11 +12,11 @@ import Conversation from './containers/Conversation';
 const router = (
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
     <Route path="/" component={App}>
-      <IndexRoute component={ChooseEgo}/>
-      <Route path="/" component={ChooseEgo}/>
-      <Route path="/converser" component={ChooseConverser}/>
+      <IndexRoute component={ChooseConverser}/>
+      <Route path="/ego" component={ChooseEgo}/>
+      <Route path="/" component={ChooseConverser}/>
       <Route path="/conversation" component={Conversation}/>
-      <Route path="*" component={ChooseEgo}/>
+      <Route path="*" component={ChooseConverser}/>
     </Route>
   </Router>
 );

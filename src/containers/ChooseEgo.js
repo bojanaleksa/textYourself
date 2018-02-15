@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         choose: (id) => {
         	dispatch({type: actions.CHOOSE_EGO, id});
-        	history.push('/converser');
+        	history.push('/');
         }
     }
 }
